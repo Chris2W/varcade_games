@@ -32,10 +32,12 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(Flicking)
 
-Vue.config.errorHandler = function (err, vm, info) {
-  alert('Err: ' + err + ', info: ' + info)
+Vue.config.errorHandler = function (err) { //vm, info parameters removed
+  // alert('Err: ' + err + ', info: ' + info)
+  alert("Something went wrong. Open a new instance of Varcade Games in a new tab")
   console.error('Error! Message: ', err.message)
   console.error('Exception thrown', err.stack)
+  
 }
 
 window.onerror = function (message, source, lineno, colno, error) {
