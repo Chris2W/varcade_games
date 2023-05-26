@@ -58,6 +58,10 @@
 
                           <div class="col">
                             <button type="button" class="btn btn-custom btn-block" @click=createGame>Create Game</button>
+                                <!-- Error Message Display -->
+                                <div v-if="errorMsg" class="alert alert-danger">
+                                {{ errorMsg }}
+                                </div>
                           </div>
 
                           <div class="col">
@@ -101,7 +105,8 @@
                     // {creatorName: "kev", game_id: "test"}
                 ],
                 icoPlayerVS: faUserCircle,
-                icoCloseModal: faTimes
+                icoCloseModal: faTimes,
+                errorMsg: null,
             }
         },
         computed: {
@@ -161,6 +166,8 @@
                     }, 
                     error => {
                         console.log('Game creation failed => ' + error)
+                        // Update errorMsg so it gets displayed in the UI
+                        this.errorMsg = 'Game creation failed => ' + error + "\n Please try again later";
                     }
                 )
             },
